@@ -8,7 +8,9 @@ export default {
       colors: {
         'gray':{
           100: '#fafafa',
-        }
+          200: '#F1F1F1',
+        },
+        'primary': '#02274F',
       },
     },
   },
