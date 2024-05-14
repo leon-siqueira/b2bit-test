@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import Login from './pages/Login'
 import User from './pages/User'
+import { SessionContext } from './main'
 
 export default function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const sessionContext = useContext(SessionContext)
+
+  const isLoggedIn = sessionContext?.isLoggedIn
 
   return (
     <>
