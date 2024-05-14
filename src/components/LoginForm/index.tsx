@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import logo from '../../assets/b2bit.svg';
 import Button from '../commons/Button';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 type LoginParams = {
   email: string;
@@ -12,6 +13,8 @@ export default function LoginForm(): JSX.Element{
   const labelClasses = 'font-bold mb-2 text-lg';
 
   const formRef = useRef<HTMLFormElement>(null);
+
+  const navigate = useNavigate();
 
   function handleClick(): void{
     const elements : HTMLFormControlsCollection | undefined = formRef.current?.elements;
@@ -30,7 +33,15 @@ export default function LoginForm(): JSX.Element{
       'Accept': 'application/json;version=v1_web'
     }
 
-    axios.post(`${import.meta.env.VITE_APP_API_URL}/auth/login`, params, {headers})
+    axios.post(`${import.meta.env.VITE_APP_API_URL}/auth/login/`, params, {headers})
+      .then(response => {
+        localStorage.setItem('accessToken', response.data.tokens.access);
+        localStorage.setItem('refreshToken', response.data.tokens.refresh);
+        navigate('/user');
+      })
+      .catch(() => {
+        // TODO: handle error. I'm thinking of a global notification component
+    })
   }
 
   return (
