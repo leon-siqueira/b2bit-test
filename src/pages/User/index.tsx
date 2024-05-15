@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
 import UserCard from "../../components/UserCard"
+import Header from "../../components/Header"
 
 export default function User() {
   const [userInfo, setUserInfo] = useState<Record<string, unknown>>({})
@@ -8,7 +9,7 @@ export default function User() {
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_APP_API_URL}/auth/profile/`, {
         headers: {
-          'Authorization': `Bearer ${localStorage.getItem('tokens')}`,
+          'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
           'Accept': 'application/json;version=v1_web'
         }
       })
@@ -23,8 +24,8 @@ export default function User() {
 
   return (
     <>
-      {/* TODO: Logout Header */}
-      <div className="flex items-center justify-center h-screen bg-secondary">
+      <div className="flex flex-wrap items-center justify-center h-screen bg-secondary relative">
+        <Header />
         <UserCard userInfo={userInfo} />
       </div>
     </>
