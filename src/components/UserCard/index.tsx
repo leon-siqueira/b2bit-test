@@ -10,7 +10,7 @@ export default function UserCard(props: UserCardProps): JSX.Element {
   const { userInfo } = props;
   const avatarInfo = userInfo.avatar as Record<string, unknown > | null;
   const avatar = avatarInfo?.image_high_url as string | null;
-  const fullName = [userInfo.name, userInfo.last_name].join(' ') as string;
+  const fullName = [userInfo.name, userInfo.last_name].join(' ');
   const email = userInfo.email as string;
 
   const labelClasses = 'mb-2 text-lg';

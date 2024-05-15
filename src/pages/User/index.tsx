@@ -13,7 +13,8 @@ export default function User() {
         }
       })
       .then(response => {
-        setUserInfo(response.data)
+        const data = response.data as Record<string, unknown>
+        setUserInfo(data)
       })
       .catch(() => {
         // TODO: handle error
@@ -22,6 +23,7 @@ export default function User() {
 
   return (
     <>
+      {/* TODO: Logout Header */}
       <div className="flex items-center justify-center h-screen bg-secondary">
         <UserCard userInfo={userInfo} />
       </div>

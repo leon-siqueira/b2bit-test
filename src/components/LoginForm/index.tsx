@@ -35,8 +35,9 @@ export default function LoginForm(): JSX.Element{
 
     axios.post(`${import.meta.env.VITE_APP_API_URL}/auth/login/`, params, {headers})
       .then(response => {
-        localStorage.setItem('accessToken', response.data.tokens.access);
-        localStorage.setItem('refreshToken', response.data.tokens.refresh);
+        const tokens = response.data.tokens as Record<string, string>;
+        localStorage.setItem('accessToken', tokens.access as string);
+        localStorage.setItem('refreshToken',tokens.refresh as string);
         navigate('/user');
       })
       .catch(() => {
