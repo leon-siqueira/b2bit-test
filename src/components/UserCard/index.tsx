@@ -26,9 +26,9 @@ export default function UserCard(props: UserCardProps): JSX.Element {
 
       <div className="flex flex-col">
         <span className={labelClasses}>Your <strong>Name</strong></span>
-        <span className={infoClasses}>{fullName || 'a'}</span>
+        <span className={infoClasses}>{fullName}</span>
         <span className={labelClasses}>Your <strong>E-mail</strong></span>
-        <span className={infoClasses}>{email || 'a'}</span>
+        <span className={infoClasses}>{email}</span>
       </div>
     </div>
     )

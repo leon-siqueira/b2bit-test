@@ -17,6 +17,8 @@ export default function LoginForm(): JSX.Element{
   const navigate = useNavigate();
 
   function handleClick(): void{
+    if(!formRef.current?.checkValidity()) return;
+
     const elements : HTMLFormControlsCollection | undefined = formRef.current?.elements;
 
     if(!elements) return;
@@ -53,7 +55,7 @@ export default function LoginForm(): JSX.Element{
         <input type="text" id='email' className={inputClasses} placeholder="@gmail.com" required />
         <label htmlFor="password" className={labelClasses}>Password</label>
         <input type="password" id='password' name="password" className={inputClasses} placeholder="********" required />
-        <Button text='Sign In' onClick={() => handleClick()} />
+        <Button text='Sign In' type='submit' onClick={() => handleClick()} />
       </form>
     </div>
   )
