@@ -1,13 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../commons/Button";
+import useNotify from "../../hooks/useNotify";
 
 export default function Header(): JSX.Element {
   const navigate = useNavigate();
+  const notify = useNotify();
 
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     navigate('/');
+    notify({ message: 'Logged out', kind: 'success' });
   }
 
   return(

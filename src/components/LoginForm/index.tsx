@@ -3,6 +3,7 @@ import logo from '../../assets/b2bit.svg';
 import Button from '../commons/Button';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import useNotify from '../../hooks/useNotify';
 
 type LoginParams = {
   email: string;
@@ -15,6 +16,7 @@ export default function LoginForm(): JSX.Element{
   const formRef = useRef<HTMLFormElement>(null);
 
   const navigate = useNavigate();
+  const notify = useNotify();
 
   function handleClick(): void{
     if(!formRef.current?.checkValidity()) return;
@@ -40,7 +42,8 @@ export default function LoginForm(): JSX.Element{
         const tokens = response.data.tokens as Record<string, string>;
         localStorage.setItem('accessToken', tokens.access as string);
         localStorage.setItem('refreshToken',tokens.refresh as string);
-        navigate('/user');
+        navigate('/');
+        notify({ message: 'Logged in', kind: 'error' })
       })
       .catch(() => {
         // TODO: handle error. I'm thinking of a global notification component

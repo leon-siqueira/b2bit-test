@@ -1,23 +1,28 @@
-import React, { createContext } from 'react'
+import React, { createContext, useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './tailwind.css'
 
-type SessionContextType = {
-  isLoggedIn: boolean
-  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
+export type NotificationType = {
+  kind: string | null,
+  message: string | null
 }
 
-export const SessionContext = createContext<SessionContextType | null>(null)
+export type NotificationContextType = {
+  notification: NotificationType,
+  setNotification: (notification: { kind: string | null, message: string | null }) => void
+}
+
+export const NotificationContext = createContext<NotificationContextType | null>(null)
 
 function Main() {
-  const [isLoggedIn, setIsLoggedIn] = React.useState<boolean>(false)
+  const [notification, setNotification] = React.useState<NotificationType>({ kind: null, message: null })
 
   return (
     <React.StrictMode>
-      <SessionContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
+      <NotificationContext.Provider value={{ notification, setNotification }}>
         <App />
-      </SessionContext.Provider>
+      </NotificationContext.Provider>
     </React.StrictMode>
   )
 }
