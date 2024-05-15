@@ -13,6 +13,9 @@ export default {
         'primary': '#02274F',
         'secondary': '#F1F5F9',
       },
+      fontFamily: {
+        'sans': ['Nunito', 'sans-serif'],
+      }
     },
   },
   plugins: [],
