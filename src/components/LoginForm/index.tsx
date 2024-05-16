@@ -4,6 +4,7 @@ import Button from '../commons/Button';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import useNotify from '../../hooks/useNotify';
+import { loginErrorMessages } from '../../helpers/loginErrorMessages';
 
 type LoginParams = {
   email: string;
@@ -43,10 +44,10 @@ export default function LoginForm(): JSX.Element{
         localStorage.setItem('accessToken', tokens.access as string);
         localStorage.setItem('refreshToken',tokens.refresh as string);
         navigate('/');
-        notify({ message: 'Logged in', kind: 'error' })
+        notify({ message: 'Logged in', kind: 'success' })
       })
-      .catch(() => {
-        // TODO: handle error. I'm thinking of a global notification component
+      .catch((error) => {
+        notify({ message: loginErrorMessages(error.response.status), kind: 'error' })
     })
   }
 
