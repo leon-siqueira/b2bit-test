@@ -24,7 +24,7 @@ export default function Notificator(): JSX.Element {
   if(!message) return <></>
 
   return (
-    <div className={`absolute ${colorClasses[kind]} top-10 m-auto right-0 left-0 max-w-[300px] z-10 p-5 shadow-lg rounded-lg`}>
+    <div data-cy="notification" className={`absolute ${colorClasses[kind]} top-10 m-auto right-0 left-0 max-w-[300px] z-10 p-5 shadow-lg rounded-lg`}>
       <img src={CloseIcon} alt="Close notification" className="absolute w-3 top-4 right-4 cursor-pointer" onClick={() => setNotification({kind: null, message: null})} />
       <span className="text-lg">{message}</span>
     </div>

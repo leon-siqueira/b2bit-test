@@ -59,7 +59,7 @@ export default function LoginForm(): JSX.Element{
         <input type="text" id='email' className={inputClasses} placeholder="@gmail.com" required />
         <label htmlFor="password" className={labelClasses}>Password</label>
         <input type="password" id='password' name="password" className={inputClasses} placeholder="********" required />
-        <Button text='Sign In' type='submit' onClick={() => handleClick()} />
+        <Button text='Sign In' type='submit' cyLabel="signInButton" onClick={() => handleClick()} />
       </form>
     </div>
   )
