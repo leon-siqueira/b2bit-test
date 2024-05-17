@@ -645,8 +645,8 @@ video {
   height: 100%;
 }
 
-.h-screen{
-  height: 100vh;
+.min-h-dvh{
+  min-height: 100dvh;
 }
 
 .w-20{

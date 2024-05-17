@@ -6,7 +6,7 @@ export default function NotFound() : JSX.Element {
 
 
   return (
-    <div className="flex items-center justify-center h-dvh flex-col">
+    <div className="flex items-center justify-center min-h-dvh flex-col">
       <div className="bg-primary-yellow px-10 py-4 rounded-2xl">
         <h2 className="text-9xl font-bold text-primary-blue">404</h2>
       </div>
