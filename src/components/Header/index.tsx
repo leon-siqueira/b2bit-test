@@ -16,7 +16,7 @@ export default function Header(): JSX.Element {
   return(
     <header className='w-full flex items-center justify-end bg-white p-4 text-white absolute top-0'>
       <div className="w-full max-w-[380px]">
-        <Button text='Logout' onClick={() => handleLogout()} />
+        <Button text='Logout' cyLabel="logout" onClick={() => handleLogout()} />
       </div>
     </header>
   )
