@@ -13,7 +13,8 @@ export default {
         'red': {
           200: '#FADBD8',
         },
-        'primary': '#02274F',
+        'primary-yellow': '#FDCF00',
+        'primary-blue': '#02274F',
         'secondary': '#F1F5F9',
       },
       fontFamily: {

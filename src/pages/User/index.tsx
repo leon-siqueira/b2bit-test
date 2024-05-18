@@ -38,7 +38,7 @@ export default function User() {
 
   return (
     <>
-      <div className="flex flex-wrap items-center justify-center h-screen bg-secondary relative">
+      <div className="flex flex-wrap items-center justify-center min-h-dvh bg-secondary relative">
         <Header />
         <UserCard userInfo={userInfo} />
       </div>
