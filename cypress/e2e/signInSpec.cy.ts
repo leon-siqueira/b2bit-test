@@ -22,11 +22,7 @@ describe('login', () => {
   })
 
   it('redirects to the user page if correct credentials', () => {
-    cy.visit('/')
-
     login()
-
-    cy.wait(2000)
 
     cy.url().should('eq', `${Cypress.config().baseUrl}`)
 
@@ -36,6 +32,16 @@ describe('login', () => {
 
     cy.get('[data-cy="logout"]').should('exist')
   })
+
+  it('logs out the user when you click the button', () => {
+    login()
+
+    cy.get('[data-cy="logout"]').click()
+
+    cy.url().should('eq', `${Cypress.config().baseUrl}`)
+
+    cy.get('[data-cy="notification"]').should('contain.text', 'Logged out')
+  })
 })
 
 export function login() : void {
@@ -44,8 +50,8 @@ export function login() : void {
     body: {
       "user": {
           "id": 4,
-          "name": "Cliente",
-          "email": "cliente@youdrive.com",
+          "name": "Jon",
+          "email": "some@credential.com",
           "is_active": true,
           "avatar": null,
           "type": "StoreUser",
@@ -84,6 +90,8 @@ export function login() : void {
       }
     }
   })
+
+  cy.visit('/')
 
   cy.get('input#email')
     .type('some@credential.com')
