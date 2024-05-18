@@ -1,4 +1,4 @@
-import { login } from "./signInSpec.cy";
+import { login } from "./helper/login.cy"
 
 describe('Home page', () => {
   it('shows the login form if you are not logged in', () => {
