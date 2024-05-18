@@ -16,7 +16,7 @@ export default function UserCard(props: UserCardProps): JSX.Element {
   const infoClasses = 'bg-gray-200 p-4 rounded-md mb-6 text-md h-[60px] truncate'
 
   return (
-    <div className="flex flex-col bg-white justify-center px-10 pb-5 pt-10 max-w-[500px] w-full shadow-md rounded-2xl mx-2">
+    <div className="flex flex-col bg-white justify-center px-10 pb-5 pt-10 max-w-[500px] w-full shadow-md rounded-2xl mx-2" data-cy="userCard">
       <div className="flex flex-col">
         <span className="mb-3 text-lg self-center">Profile Picture</span>
         <div className="relative self-center w-20 h-20 mb-8">

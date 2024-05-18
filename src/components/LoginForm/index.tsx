@@ -54,7 +54,7 @@ export default function LoginForm(): JSX.Element{
   return (
     <div className='flex flex-col bg-white justify-center px-7 py-10 max-w-[440px] w-full shadow-md rounded-2xl mx-2'>
       <img src={logo} alt="B2bit's logo" className='w-full max-w-[310px] mb-8 mt-4 self-center' />
-      <form className='flex flex-col' ref={formRef} onSubmit={e => e.preventDefault()}>
+      <form className='flex flex-col' ref={formRef} data-cy="loginForm" onSubmit={e => e.preventDefault()}>
         <label htmlFor="email" className={labelClasses}>E-mail</label>
         <input type="text" id='email' className={inputClasses} placeholder="@gmail.com" required />
         <label htmlFor="password" className={labelClasses}>Password</label>
