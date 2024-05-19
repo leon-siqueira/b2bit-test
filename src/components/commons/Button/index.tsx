@@ -2,12 +2,13 @@
 type ButtonProps = {
   text: string;
   type?: "button" | "submit" | "reset";
+  cyLabel?: string;
   onClick: () => void;
 }
 export default function Button(props : ButtonProps): JSX.Element{
-  const { text, type, onClick } = props;
+  const { text, type, cyLabel, onClick } = props;
   return (
-    <button type={type || "button"} className="flex bg-primary-blue py-3 px-4 rounded-md text-white font-bold text-lg cursor-pointer items-center justify-center w-full" onClick={onClick}>
+    <button data-cy={cyLabel || ''}  type={type || "button"} className="flex bg-primary-blue py-3 px-4 rounded-md text-white font-bold text-lg cursor-pointer items-center justify-center w-full" onClick={onClick}>
       {text}
     </button>
   )
