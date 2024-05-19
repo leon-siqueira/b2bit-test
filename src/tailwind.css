@@ -637,10 +637,6 @@ video {
   height: 60px;
 }
 
-.h-dvh{
-  height: 100dvh;
-}
-
 .h-full{
   height: 100%;
 }
