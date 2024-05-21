@@ -1,53 +1,34 @@
 import { useRef } from 'react';
 import logo from '../../assets/b2bit.svg';
 import Button from '../commons/Button';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { LoginParams } from '../../types/loginParams';
+import { login } from '../../api/login';
+import { handleFormData } from './handleFormData';
 import useNotify from '../../hooks/useNotify';
+import { useNavigate } from 'react-router-dom';
 import { loginErrorMessages } from '../../helpers/loginErrorMessages';
 
-type LoginParams = {
-  email: string;
-  password: string;
-}
 export default function LoginForm(): JSX.Element{
   const inputClasses = 'bg-gray-200 p-4 rounded-md mb-6 text-lg';
   const labelClasses = 'font-bold mb-2 text-lg';
 
   const formRef = useRef<HTMLFormElement>(null);
-
+  const notify = useNotify()
   const navigate = useNavigate();
-  const notify = useNotify();
 
   function handleClick(): void{
     if(!formRef.current?.checkValidity()) return;
 
-    const elements : HTMLFormControlsCollection | undefined = formRef.current?.elements;
+    const params : LoginParams = handleFormData(formRef.current.elements);
 
-    if(!elements) return;
-
-    const emailField = elements[0] as HTMLInputElement;
-    const passwordField = elements[1] as HTMLInputElement;
-    const params : LoginParams = {
-      email: emailField.value,
-      password: passwordField.value
-    }
-
-    const headers = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json;version=v1_web'
-    }
-
-    axios.post(`${import.meta.env.VITE_APP_API_URL}/auth/login/`, params, {headers})
-      .then(response => {
-        const tokens = response.data.tokens as Record<string, string>;
-        localStorage.setItem('accessToken', tokens.access as string);
-        localStorage.setItem('refreshToken',tokens.refresh as string);
+    login(params).then(response => {
+      if(response.success) {
         navigate('/');
         notify({ message: 'Logged in', kind: 'success' })
-      })
-      .catch((error) => {
-        notify({ message: loginErrorMessages(error.response.status), kind: 'error' })
+      } else {
+        const error = response.error as Record<string, any>
+        notify({ message: loginErrorMessages(error.status), kind: 'error' })
+      }
     })
   }
 
