@@ -1,6 +1,7 @@
 import { useContext, useEffect } from "react"
-import { NotificationContext, NotificationContextType } from "../../main"
+import { NotificationContext } from "../../main"
 import CloseIcon from '../../assets/close.svg'
+import { NotificationContextType } from "../../types/notificationContextType"
 
 export default function Notificator(): JSX.Element {
   const { notification, setNotification } = useContext(NotificationContext) as NotificationContextType

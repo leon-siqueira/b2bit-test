@@ -1,10 +1,5 @@
+import { ButtonProps } from "../../../types/buttonProps";
 
-type ButtonProps = {
-  text: string;
-  type?: "button" | "submit" | "reset";
-  cyLabel?: string;
-  onClick: () => void;
-}
 export default function Button(props : ButtonProps): JSX.Element{
   const { text, type, cyLabel, onClick } = props;
   return (

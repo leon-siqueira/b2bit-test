@@ -2,21 +2,14 @@ import React, { createContext } from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './tailwind.css'
+import { Notification } from './types/notification.ts'
+import { NotificationContextType } from './types/notificationContextType.ts'
 
-export type NotificationType = {
-  kind: string | null,
-  message: string | null
-}
 
-export type NotificationContextType = {
-  notification: NotificationType,
-  setNotification: (notification: { kind: string | null, message: string | null }) => void
-}
-
-export const NotificationContext = createContext<NotificationContextType | null>(null)
+export const NotificationContext = createContext<NotificationContextType | null >(null)
 
 function Main() {
-  const [notification, setNotification] = React.useState<NotificationType>({ kind: null, message: null })
+  const [notification, setNotification] = React.useState<Notification>({ kind: null, message: null })
 
   return (
     <React.StrictMode>
