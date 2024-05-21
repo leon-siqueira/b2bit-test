@@ -1,6 +1,6 @@
 # B2bit - Frontend test
 
-This project is a login page that validates and authorizes the credntials and shows the user's informations on the end-point `/user`. The said end-point is restricted to logged users and shows the avatar, full name and email address of the logged user. The authentication token and the user data is provided by an API.
+This project is a login page that validates and authorizes the credntials and shows the user's informations on the end-point `/user`. The said end-point is restricted to logged users and shows the avatar, full name and email address of the logged user. The authentication token and the user data are provided by an API.
 
 ## Visuals
 
@@ -18,12 +18,20 @@ This project is a login page that validates and authorizes the credntials and sh
 
 ## Setup
 
+0. Ensure that you have Git and NodeJS installed to run the following commands
+```zsh
+git --version
+node -v
+```
 1. Clone the repository and go to the project directory
-2. Assure that the dependencies are installed
+```zsh
+git clone https://github.com/leon-siqueira/b2bit-test.git
+```
+2. Ensure that the dependencies are installed
 ```zsh
 npm install
 ```
-3. Assure that the CSS classes is up to date
+3. Ensure that the CSS classes are up-to-date
 ```zsh
 npm run build:css
 ```
